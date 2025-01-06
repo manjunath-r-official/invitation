@@ -1,0 +1,111 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* my styles */
+
+.app {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.home {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 1s, transform 1s;
+}
+
+.home.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  /* Mobile styles */
+  .app {
+    flex-direction: column;
+  }
+}
+
+/* section 1 css */
+.section-1 {
+  background-image: url('../images/bg3.jpg');
+  background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    min-height: 100vh;
+}
+
+/* App.css */
+.slide-in-left {
+  position: absolute;
+  margin-top: 100px;
+  animation: slideInLeft 1s ease-out;
+}
+
+.slide-in-right {
+  position: absolute;
+  animation: slideInRight 1s ease-out;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+

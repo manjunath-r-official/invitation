@@ -1,0 +1,32 @@
+/* Invitation.css */
+.invitation-container {
+    position: relative;
+  }
+  
+  .video-section {
+    width: 100%;
+  }
+  
+  .video-section video {
+    width: 100%;
+  }
+  
+  .invitation-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .golden-card {
+    background: gold;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .golden-card h1 {
+    color: #fff;
+  }
+  
