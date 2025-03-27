@@ -1,31 +1,55 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
+import React, { useState, useEffect } from 'react';
 import '../styles/Door.css';
 
 const Door = ({ isOpen, onOpen }) => {
   const [isTransformed, setTransformed] = useState(false);
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const [backgroundBrightness, setBackgroundBrightness] = useState(0); // State to control background brightness
+
+  useEffect(() => {
+    if (!isTransformed) {
+      setTransformed(true);
+      onOpen();
+
+      // Gradually increase background brightness when the door opens
+      let brightnessInterval = setInterval(() => {
+        setBackgroundBrightness((prev) => {
+          if (prev >= 1) {
+            clearInterval(brightnessInterval);
+            return 1;
+          }
+          return prev + 0.1;
+        });
+      }, 300); // Adjust interval duration as needed
+    }
+  }, []);
 
   const handleWrapperClick = () => {
     setTransformed(!isTransformed);
-
-    // Add any other logic for opening the door if needed
-
-    // Redirect to homepage after 5 seconds
-    if (!isTransformed) {
-      setTimeout(() => {
-        onOpen(); // Trigger the door open logic
-        navigate("/invitation"); // Use navigate to redirect to "/home"
-      }, 1000); // 5000 milliseconds = 5 seconds
-    }
+    onOpen();
   };
 
-    return (
-        <div className={`wrapper ${isTransformed ? 'transformed' : ''}`} onClick={handleWrapperClick}>
-        <div id="door-1" className={`door door-1 ${isOpen ? 'open' : ''}`} onClick={onOpen}></div>
-        <div id="door-2" className={`door door-2 ${isOpen ? 'open' : ''}`} onClick={onOpen}></div>
+  return (
+    <div
+      className="door-container"
+      style={{
+        backgroundColor: `rgba(0, 0, 0, ${1 - backgroundBrightness})`, // Transition background from dark to normal
+        transition: 'background-color 0.5s ease', // Smooth transition
+      }}
+    >
+      <div className={`wrapper ${isTransformed ? 'transformed' : ''}`} onClick={handleWrapperClick}>
+        <div id="door-1" className={`door door-1 ${isOpen ? 'open' : ''}`}>
+          <div className="door-name">Pream</div> {/* Add groom's name */}
+        </div>
+        <div id="door-2" className={`door door-2 ${isOpen ? 'open' : ''}`}>
+          <div className="door-name">Rakshitha</div> {/* Add bride's name */}
+        </div>
+        {/* Removed "Weds" text */}
       </div>
-    );
-  };
-  
-  export default Door;
+      <div className="content">
+        <iframe src="/invitation" title="Invitation Page" className="invitation-frame"></iframe>
+      </div>
+    </div>
+  );
+};
+
+export default Door;

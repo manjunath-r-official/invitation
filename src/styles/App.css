@@ -65,47 +65,4 @@
   }
 }
 
-/* section 1 css */
-.section-1 {
-  background-image: url('../images/bg3.jpg');
-  background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top;
-    min-height: 100vh;
-}
-
-/* App.css */
-.slide-in-left {
-  position: absolute;
-  margin-top: 100px;
-  animation: slideInLeft 1s ease-out;
-}
-
-.slide-in-right {
-  position: absolute;
-  animation: slideInRight 1s ease-out;
-}
-
-@keyframes slideInLeft {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInRight {
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 
