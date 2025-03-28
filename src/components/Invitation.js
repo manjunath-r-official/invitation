@@ -3,20 +3,31 @@ import '../styles/Invitation.css';
 import Video from '../video/vid.mp4';
 import Carousel from './Carousel';
 
+// Import images
+import image1 from '../images/carousel/1.jpg';
+import image2 from '../images/carousel/2.jpg';
+import image3 from '../images/carousel/3.jpg';
+import image4 from '../images/carousel/4.jpg';
+import image5 from '../images/carousel/5.jpg';
+import image6 from '../images/carousel/6.jpg';
+import image7 from '../images/carousel/7.jpg';
+import image8 from '../images/carousel/8.jpg';
+import image9 from '../images/carousel/9.jpg';
+
 const Invitation = () => {
   const weddingDate = new Date('2025-03-29T00:00:00');
   const [timeRemaining, setTimeRemaining] = useState({});
   const carouselImages = [
-    '/images/carousel/1.jpg',
-    '/images/carousel/2.jpg',
-    '/images/carousel/3.jpg',
-    '/images/carousel/4.jpg',
-    '/images/carousel/5.jpg',
-    '/images/carousel/6.jpg',
-    '/images/carousel/7.jpg',
-    '/images/carousel/8.jpg',
-    '/images/carousel/9.jpg',
-  ]; // Ensure these paths match the actual filenames in the public/images/carousel/ folder
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+    image8,
+    image9,
+  ]; // Use imported images
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -82,14 +93,15 @@ const Invitation = () => {
         </div>
       </div>
 
+      <div className="section-3">
+        <Carousel images={carouselImages} />
+      </div>
+      
       <div className="section-2">
         <h1>Join Us in Celebrating Love</h1>
         <p>We are thrilled to invite you to our wedding celebration.</p>
       </div>
 
-      <div className="section-3">
-        <Carousel images={carouselImages} />
-      </div>
     </div>
   );
 };
